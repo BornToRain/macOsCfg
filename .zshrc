@@ -1,7 +1,4 @@
 export ZSH="/Users/ryze/.oh-my-zsh"
-# 主题
-ZSH_THEME="powerlevel9k/powerlevel9k"
-POWERLEVEL9K_MODE='nerdfont-complete'
 # 别名
 alias tsit25="ssh root@10.86.33.25"
 alias tsit30="ssh root@10.86.33.30"
@@ -9,55 +6,32 @@ alias tsit35="ssh root@10.86.33.35"
 alias tsit12="ssh root@39.107.251.12"
 alias tsit21="ssh root@10.86.33.21"
 alias tsit125="ssh tsit@10.86.33.125"
+# 泰安市立
+alias tasl60="ssh root@172.16.37.60"
+alias tasl61="ssh root@172.16.37.61"
+alias tasl62="ssh root@172.16.37.62"
+alias tasl63="ssh root@172.16.37.63"
+# 泰山医疗
+alias tsyl140="ssh root@10.86.33.140"
+alias tsyl141="ssh root@10.86.33.141"
+alias tsyl142="ssh root@10.86.33.142"
+alias tsyl143="ssh root@10.86.33.143"
+alias tsyl144="ssh root@10.86.33.144"
+alias tsyl145="ssh root@10.86.33.145"
+alias tsyl146="ssh root@10.86.33.146"
+alias tsyl147="ssh root@10.86.33.147"
+alias tsyl148="ssh root@10.86.33.148"
+alias tsyl149="ssh root@10.86.33.149"
+alias tsyl150="ssh root@10.86.33.150"
+alias tsyl151="ssh root@10.86.33.151"
+alias tsyl152="ssh root@10.86.33.152"
+alias tsyl153="ssh root@10.86.33.153"
+alias tsyl154="ssh root@10.86.33.154"
 alias btr="ssh root@49.233.185.34"
 alias smp="ssh root@10.86.23.26"
-prompt_zsh_battery_level() {
-  local percentage1=`pmset -g ps  |  sed -n 's/.*[[:blank:]]+*\(.*%\).*/\1/p'`
-  local percentage=`echo "${percentage1//\%}"`
-  local color='%F{red}'
-  local symbol="\uf00d"
-  pmset -g ps | grep "discharging" > /dev/null
-  if [ $? -eq 0 ]; then
-    local charging="false";
-  else
-    local charging="true";
-  fi
-  if [ $percentage -le 20 ]
-  then symbol='\uf579' ; color='%F{red}' ;
-    #10%
-  elif [ $percentage -gt 19 ] && [ $percentage -le 30 ]
-  then symbol="\uf57a" ; color='%F{red}' ;
-    #20%
-  elif [ $percentage -gt 29 ] && [ $percentage -le 40 ]
-  then symbol="\uf57b" ; color='%F{yellow}' ;
-    #35%
-  elif [ $percentage -gt 39 ] && [ $percentage -le 50 ]
-  then symbol="\uf57c" ; color='%F{yellow}' ;
-    #45%
-  elif [ $percentage -gt 49 ] && [ $percentage -le 60 ]
-  then symbol="\uf57d" ; color='%F{blue}' ;
-    #55%
-  elif [ $percentage -gt 59 ] && [ $percentage -le 70 ]
-  then symbol="\uf57e" ; color='%F{blue}' ;
-    #65%
-  elif [ $percentage -gt 69 ] && [ $percentage -le 80 ]
-  then symbol="\uf57f" ; color='%F{blue}' ;
-    #75%
-  elif [ $percentage -gt 79 ] && [ $percentage -le 90 ]
-  then symbol="\uf580" ; color='%F{blue}' ;
-    #85%
-  elif [ $percentage -gt 89 ] && [ $percentage -le 99 ]
-  then symbol="\uf581" ; color='%F{blue}' ;
-    #85%
-  elif [ $percentage -gt 98 ]
-  then symbol="\uf578" ; color='%F{green}' ;
-    #100%
-  fi
-  if [ $charging = "true" ];
-  then color='%F{green}'; if [ $percentage -gt 98 ]; then symbol='\uf584'; fi
-  fi
-  echo -n "%{$color%}$symbol" ;
-}
+# 主题设置
+ZSH_THEME="powerlevel9k/powerlevel9k"
+POWERLEVEL9K_MODE='nerdfont-complete'
 ZSH_DISABLE_COMPFIX=true
 POWERLEVEL9K_CONTEXT_TEMPLATE="%n"
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
@@ -82,7 +56,6 @@ POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='white'
 POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='black'
 POWERLEVEL9K_COMMAND_EXECUTION_TIME_BACKGROUND='black'
 POWERLEVEL9K_COMMAND_EXECUTION_TIME_FOREGROUND='blue'
-POWERLEVEL9K_FOLDER_ICON=''
 POWERLEVEL9K_STATUS_OK_IN_NON_VERBOSE=true
 POWERLEVEL9K_STATUS_VERBOSE=false
 POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=0
@@ -93,8 +66,7 @@ POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON='\u2191'
 POWERLEVEL9K_VCS_COMMIT_ICON="\uf417"
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%F{blue}\u256D\u2500%f"
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%F{blue}\u2570\uf460%f "
-POWERLEVEL9K_CUSTOM_BATTERY_STATUS="prompt_zsh_battery_level"
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context custom_internet_signal custom_battery_status_joined ssh root_indicator dir dir_writable vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context custom_internet_signal ssh root_indicator dir dir_writable vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time  status  time)
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -190,11 +162,17 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 eval $(thefuck --alias)
 # java相关
-export PATH="/Library/Java/JavaVirtualMachines/graalvm-ce-19.2.1/Contents/Home/bin:$PATH"
-export PATH="/Library/Java/JavaVirtualMachines/graalvm-ce-19.2.1/Contents/Home/jre/languages/js/bin:$PATH"
+export PATH2="/Library/Java/JavaVirtualMachines/graalvm-ce-19.2.1/Contents/Home/bin:$PATH"
+export PATH2="/Library/Java/JavaVirtualMachines/graalvm-ce-19.2.1/Contents/Home/jre/languages/js/bin:$PATH"
+export PATH="/Library/Java/JavaVirtualMachines/graalvm-ce-java11-20.1.0/Contents/Home/bin:$PATH"
+export PATH="/Library/Java/JavaVirtualMachines/graalvm-ce-java11-20.1.0/Contents/Home/jre/languages/js/bin:$PATH"
+export PATH1="/Library/Java/JavaVirtualMachines/graalvm-ce-java8-20.1.0/Contents/Home/bin:$PATH"
+export PATH1="/Library/Java/JavaVirtualMachines/graalvm-ce-java8-20.1.0/Contents/Home/jre/languages/js/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.cargo/env:$PATH"
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/graalvm-ce-19.2.1/Contents/Home"
+export JAVA_HOME2="/Library/Java/JavaVirtualMachines/graalvm-ce-19.2.1/Contents/Home"
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/graalvm-ce-java11-20.1.0/Contents/Home"
+export JAVA_HOME1="/Library/Java/JavaVirtualMachines/graalvm-ce-java8-20.1.0/Contents/Home"
 export PATH="/usr/local/opt/llvm/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/llvm/lib"
 export CPPFLAGS="-I/usr/local/opt/llvm/include"
